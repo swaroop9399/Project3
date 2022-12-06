@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Student>
+@{
+    ViewData["Title"] = "DataTable";
+}
+<head>
+    <style>
+        #students {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #students td, #students th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #students tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #students tr:hover {
+                background-color: #ddd;
+            }
+
+            #students th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #04AA6D;
+                color: white;
+            }
+    </style>
+</head>
+
+<div class="row">
+    <div class="col-12">
+        <a href="/Home/Login" class="btn btn-success">Register</a>
+    </div>
+</div>
+<br>
+<br>
+<table id="students">
+    
+    <thead>
+        <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Location</th>
+        <th>Password</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody id="tbody">
+        @foreach (var item in Model)
+        {
+            <tr id="@item.Id">
+                <th scope="row">@item.Id</th>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.Gender</td>
+                <td>@item.Location</td>
+                <td>@item.Password</td>
+                <td><a href="/Home/EditProcess/@item.Id" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                <td><a href="/Home/DeleteProcess/@item.Id" class="btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></a></td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>    
